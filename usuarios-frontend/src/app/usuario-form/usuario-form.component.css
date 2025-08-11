@@ -1,32 +1,30 @@
 .form-container {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
 
   display: flex;
-  justify-content: center;  
-  align-items: center;      
+  justify-content: center;
+  align-items: center;
 
   background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1000; 
-  padding: 1rem; 
+  z-index: 1000;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
-
 form {
   max-width: 400px;
-  width: 100%;  
+  width: 100%;
   margin: 0;
   padding: 2rem;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
 
 h2 {
   text-align: center;
@@ -48,12 +46,19 @@ input[type="email"],
 input[type="password"],
 select {
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
   margin-top: 0.3rem;
   border: 1.8px solid #ddd;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+input {
+  width: 90%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.3rem;
 }
 
 input[type="text"]:focus,
@@ -113,7 +118,7 @@ button[type="submit"]:disabled {
 }
 
 .error-message {
-  color: #d6336c; 
+  color: #d6336c;
   font-size: 0.8rem;
   margin-top: 0.25rem;
   font-weight: 500;

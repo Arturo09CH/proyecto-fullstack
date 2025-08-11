@@ -3,7 +3,7 @@
     <h2>{{ esEdicion ? "Editar Usuario" : "Nuevo Usuario" }}</h2>
 
     <label>Nombre:</label>
-    <input formControlName="nombre" />
+    <input formControlName="nombre" placeholder="Ej. Pablo Garcia" />
     <div
       class="error-message"
       *ngIf="
@@ -14,7 +14,7 @@
     </div>
 
     <label>Email:</label>
-    <input formControlName="email" />
+    <input class="imp-frm" formControlName="email" placeholder="ejemplo@gmail.com"/>
     <div
       class="error-message"
       *ngIf="
@@ -26,7 +26,7 @@
     </div>
 
     <label>Login:</label>
-    <input formControlName="login" />
+    <input class="imp-frm" formControlName="login" placeholder="Ej. pabloG" />
     <div
       class="error-message"
       *ngIf="
@@ -37,7 +37,7 @@
     </div>
 
     <label>Password:</label>
-    <input type="password" formControlName="password" />
+    <input type="password" formControlName="password" placeholder="Al menos 1 letra, número y carácter especial" />
     <div
       class="error-message"
       *ngIf="
