@@ -12,9 +12,4 @@ CREATE TABLE usuarios (
 );
 
 
-INSERT INTO usuarios (nombre, email, login, password, rol) VALUES
-('Arturo Hernandez', 'arturo20ch@gmail.com', 'arturoh', 'arturo1234', 'ADMIN'),
-('María López', 'maria@example.com', 'marial', '123456', 'USER'),
-('Carlos García', 'carlos@example.com', 'carlosg', '123456', 'USER');
-
 select * from usuarios;
