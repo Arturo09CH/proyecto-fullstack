@@ -1,5 +1,5 @@
 export interface Usuario {
-  id?: number;       // opcional porque al crear no tiene id aún
+  id?: number;     
   nombre: string;
   email: string;
   login: string;

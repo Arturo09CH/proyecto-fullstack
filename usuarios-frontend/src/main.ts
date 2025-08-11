@@ -4,17 +4,11 @@ import { importProvidersFrom } from '@angular/core';
 
 import { App } from './app/app';
 import { routes } from './app/app-routing';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from './app/interceptors/auth.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 bootstrapApplication(App, {
   providers: [
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
   ]
 });

@@ -1,0 +1,60 @@
+.usuarios-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.usuarios-table th, .usuarios-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.usuarios-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.usuarios-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+button {
+  padding: 6px 10px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.edit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+h2 {
+  color: #007bff;
+}
+
+button:first-of-type {
+  margin-bottom: 10px;
+}

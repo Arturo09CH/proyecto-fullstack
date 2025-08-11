@@ -1,44 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Para *ngIf y *ngFor
+import { CommonModule } from '@angular/common'; 
 import { Router } from '@angular/router';
 import { UsuariosService, Usuario } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-usuarios-list',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
-    <h2>Lista de Usuarios</h2>
-    <button (click)="nuevoUsuario()">Nuevo Usuario</button>
-    <table *ngIf="usuarios.length > 0; else noUsers" border="1" cellpadding="5">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Email</th>
-          <th>Login</th>
-          <th>Rol</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let usuario of usuarios">
-          <td>{{ usuario.nombre }}</td>
-          <td>{{ usuario.email }}</td>
-          <td>{{ usuario.login }}</td>
-          <td>{{ usuario.rol }}</td>
-          <td>
-            <button (click)="editarUsuario(usuario.id!)">Editar</button>
-            <button (click)="eliminarUsuario(usuario.id!)">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <ng-template #noUsers>
-      <p>No hay usuarios disponibles.</p>
-    </ng-template>
-    <button (click)="logout()">Cerrar Sesión</button>
-
-  `
+  standalone: true,                
+  imports: [CommonModule],        
+  templateUrl: './usuarios-list.component.html',
+  styleUrls: ['./usuarios-list.component.css']
 })
 export class UsuariosListComponent implements OnInit {
   usuarios: Usuario[] = [];
@@ -71,11 +41,6 @@ export class UsuariosListComponent implements OnInit {
         error: (err) => console.error('Error al eliminar usuario', err),
       });
     }
-  }
-
-  logout() {
-  localStorage.removeItem('token');
-  this.router.navigate(['/login']);
   }
 
 }

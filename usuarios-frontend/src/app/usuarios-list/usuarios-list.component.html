@@ -1,0 +1,29 @@
+<h2>Lista de Usuarios</h2>
+<button (click)="nuevoUsuario()">Nuevo Usuario</button>
+<table *ngIf="usuarios.length > 0; else noUsers" class="usuarios-table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Login</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.login }}</td>
+      <td>{{ usuario.rol }}</td>
+      <td>
+        <button class="edit-btn" (click)="editarUsuario(usuario.id!)">Editar</button>
+        <button class="delete-btn" (click)="eliminarUsuario(usuario.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noUsers>
+  <p>No hay usuarios disponibles.</p>
+</ng-template>
+

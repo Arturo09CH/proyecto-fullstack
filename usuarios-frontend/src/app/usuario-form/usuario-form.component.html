@@ -1,41 +1,77 @@
-<h2>{{ esEdicion ? 'Editar Usuario' : 'Nuevo Usuario' }}</h2>
-<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+<div class="form-container">
+  <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+    <h2>{{ esEdicion ? "Editar Usuario" : "Nuevo Usuario" }}</h2>
 
-  <label>Nombre:</label>
-  <input formControlName="nombre" />
-  <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched">
-    El nombre es obligatorio y máximo 100 caracteres.
-  </div>
+    <label>Nombre:</label>
+    <input formControlName="nombre" />
+    <div
+      class="error-message"
+      *ngIf="
+        usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched
+      "
+    >
+      El nombre es obligatorio y máximo 100 caracteres.
+    </div>
 
-  <label>Email:</label>
-  <input formControlName="email" />
-  <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
-    Email válido es obligatorio.
-  </div>
+    <label>Email:</label>
+    <input formControlName="email" />
+    <div
+      class="error-message"
+      *ngIf="
+        usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched
+      "
+    >
+      El correo debe ser un email válido y tener una extensión común (gmail.com,
+      hotmail.com, yahoo.com, etc.).
+    </div>
 
-  <label>Login:</label>
-  <input formControlName="login" />
-  <div *ngIf="usuarioForm.get('login')?.invalid && usuarioForm.get('login')?.touched">
-    Login es obligatorio.
-  </div>
+    <label>Login:</label>
+    <input formControlName="login" />
+    <div
+      class="error-message"
+      *ngIf="
+        usuarioForm.get('login')?.invalid && usuarioForm.get('login')?.touched
+      "
+    >
+      Login es obligatorio.
+    </div>
 
-  <label>Password:</label>
-  <input type="password" formControlName="password" />
-  <div *ngIf="usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched">
-    La contraseña es obligatoria.
-  </div>
+    <label>Password:</label>
+    <input type="password" formControlName="password" />
+    <div
+      class="error-message"
+      *ngIf="
+        usuarioForm.get('password')?.touched &&
+        usuarioForm.get('password')?.invalid
+      "
+    >
+      <span *ngIf="usuarioForm.get('password')?.errors?.['required']">
+        La contraseña es obligatoria.
+      </span>
+      <span *ngIf="usuarioForm.get('password')?.errors?.['pattern']">
+        La contraseña debe contener al menos una letra, un número y un carácter
+        especial permitido (@, $, !, %, *, ?, &, ., -, _).
+      </span>
+    </div>
 
-  <label>Rol:</label>
-  <select formControlName="rol">
-    <option value="" disabled>Seleccione un rol</option>
-    <option value="usuario">Usuario</option>
-    <option value="administrador">Administrador</option>
-  </select>
-  <div *ngIf="usuarioForm.get('rol')?.invalid && usuarioForm.get('rol')?.touched">
-    El rol es obligatorio.
-  </div>
+    <label>Rol:</label>
+    <select formControlName="rol">
+      <option value="" disabled>Seleccione un rol</option>
+      <option value="usuario">Usuario</option>
+      <option value="administrador">Administrador</option>
+    </select>
+    <div
+      class="error-message"
+      *ngIf="usuarioForm.get('rol')?.invalid && usuarioForm.get('rol')?.touched"
+    >
+      El rol es obligatorio.
+    </div>
 
-  <button type="submit" [disabled]="usuarioForm.invalid">Guardar</button>
-  <button type="button" (click)="cancelar()">Cancelar</button>
-
-</form>
+    <button type="submit" [disabled]="usuarioForm.invalid" class="save-button">
+      Guardar
+    </button>
+    <button type="button" (click)="cancelar()" class="cancel-button">
+      Cancelar
+    </button>
+  </form>
+</div>

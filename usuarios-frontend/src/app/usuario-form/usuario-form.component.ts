@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';               // Para *ngIf, *ngFor
-import { ReactiveFormsModule } from '@angular/forms';         // Para formGroup y Validators
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService, Usuario } from '../services/usuarios.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario-form',
-  standalone: true,  // Indica que es un componente independiente
-  imports: [CommonModule, ReactiveFormsModule], // Importa módulos usados en el template
-  templateUrl: './usuario-form.component.html'
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './usuario-form.component.html',
+  styleUrls: ['./usuario-form.component.css'],
 })
 export class UsuarioFormComponent implements OnInit {
   usuarioForm!: FormGroup;
@@ -26,13 +27,31 @@ export class UsuarioFormComponent implements OnInit {
   ngOnInit() {
     this.usuarioForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(100)]],
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.maxLength(100),
+          Validators.pattern(
+            /^[a-z0-9._%+-]+@(gmail\.com|hotmail\.com|yahoo\.com|outlook\.com|live\.com)$/i
+          ),
+        ],
+      ],
       login: ['', Validators.required],
-      password: ['', Validators.required],
-      rol: ['', [Validators.required, Validators.maxLength(50)]]
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
+          ),
+        ],
+      ],
+      rol: ['', [Validators.required, Validators.maxLength(50)]],
     });
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       if (params['id']) {
         this.esEdicion = true;
         this.usuarioId = +params['id'];
@@ -47,7 +66,7 @@ export class UsuarioFormComponent implements OnInit {
         this.usuarioForm.patchValue(usuario);
         this.usuarioForm.get('password')?.setValue('');
       },
-      error: (err) => console.error('Error al cargar usuario', err)
+      error: (err) => console.error('Error al cargar usuario', err),
     });
   }
 
@@ -57,14 +76,16 @@ export class UsuarioFormComponent implements OnInit {
     const usuario: Usuario = this.usuarioForm.value;
 
     if (this.esEdicion && this.usuarioId != null) {
-      this.usuariosService.actualizarUsuario(this.usuarioId, usuario).subscribe({
-        next: () => this.router.navigate(['/usuarios']),
-        error: (err) => console.error('Error al actualizar usuario', err)
-      });
+      this.usuariosService
+        .actualizarUsuario(this.usuarioId, usuario)
+        .subscribe({
+          next: () => this.router.navigate(['/usuarios']),
+          error: (err) => console.error('Error al actualizar usuario', err),
+        });
     } else {
       this.usuariosService.crearUsuario(usuario).subscribe({
         next: () => this.router.navigate(['/usuarios']),
-        error: (err) => console.error('Error al crear usuario', err)
+        error: (err) => console.error('Error al crear usuario', err),
       });
     }
   }

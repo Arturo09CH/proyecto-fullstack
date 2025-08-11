@@ -1,0 +1,120 @@
+.form-container {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000; 
+  padding: 1rem; 
+  box-sizing: border-box;
+}
+
+
+form {
+  max-width: 400px;
+  width: 100%;  
+  margin: 0;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.3rem;
+  border: 1.8px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: none;
+  border-color: #4f46e5; /* Indigo-600 */
+  box-shadow: 0 0 5px #4f46e5aa;
+}
+
+div.ng-invalid.ng-touched {
+  color: #d6336c; /* red */
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.75rem;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #4338ca;
+}
+
+button[type="submit"]:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: #ddd;
+  border: none;
+  border-radius: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #bbb;
+}
+
+.error-message {
+  color: #d6336c; 
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
