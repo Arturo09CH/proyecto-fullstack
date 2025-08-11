@@ -1,0 +1,41 @@
+<h2>{{ esEdicion ? 'Editar Usuario' : 'Nuevo Usuario' }}</h2>
+<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+
+  <label>Nombre:</label>
+  <input formControlName="nombre" />
+  <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched">
+    El nombre es obligatorio y máximo 100 caracteres.
+  </div>
+
+  <label>Email:</label>
+  <input formControlName="email" />
+  <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
+    Email válido es obligatorio.
+  </div>
+
+  <label>Login:</label>
+  <input formControlName="login" />
+  <div *ngIf="usuarioForm.get('login')?.invalid && usuarioForm.get('login')?.touched">
+    Login es obligatorio.
+  </div>
+
+  <label>Password:</label>
+  <input type="password" formControlName="password" />
+  <div *ngIf="usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched">
+    La contraseña es obligatoria.
+  </div>
+
+  <label>Rol:</label>
+  <select formControlName="rol">
+    <option value="" disabled>Seleccione un rol</option>
+    <option value="usuario">Usuario</option>
+    <option value="administrador">Administrador</option>
+  </select>
+  <div *ngIf="usuarioForm.get('rol')?.invalid && usuarioForm.get('rol')?.touched">
+    El rol es obligatorio.
+  </div>
+
+  <button type="submit" [disabled]="usuarioForm.invalid">Guardar</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+
+</form>
