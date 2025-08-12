@@ -1,29 +1,57 @@
-<h2>Lista de Usuarios</h2>
-<button (click)="nuevoUsuario()">Nuevo Usuario</button>
-<table *ngIf="usuarios.length > 0; else noUsers" class="usuarios-table">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th>Login</th>
-      <th>Rol</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let usuario of usuarios">
-      <td>{{ usuario.nombre }}</td>
-      <td>{{ usuario.email }}</td>
-      <td>{{ usuario.login }}</td>
-      <td>{{ usuario.rol }}</td>
-      <td>
-        <button class="edit-btn" (click)="editarUsuario(usuario.id!)">Editar</button>
-        <button class="delete-btn" (click)="eliminarUsuario(usuario.id!)">Eliminar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<ng-template #noUsers>
-  <p>No hay usuarios disponibles.</p>
-</ng-template>
-
+<div class="list-container">
+  <h2>Lista de Usuarios</h2>
+  <button class="add-u" (click)="nuevoUsuario()">Nuevo Usuario</button>
+  <table *ngIf="usuarios.length > 0; else noUsers" class="usuarios-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Login</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>
+          <svg
+            class="usuario-icon-inline"
+            viewBox="0 0 64 64"
+            width="18"
+            height="18"
+            margin="0 5 -5 0"
+            aria-hidden="true"
+            role="img"
+            style="margin: 0 5px -5px 0;"
+          >
+            <circle cx="32" cy="32" r="32" fill="#E6F0FF" />
+            <path
+              d="M32 34c6.075 0 11-4.925 11-11s-4.925-11-11-11-11 4.925-11 11 4.925 11 11 11z"
+              fill="#1F6FEB"
+            />
+            <path
+              d="M12 52c0-6.627 6.477-12 20-12s20 5.373 20 12v0H12z"
+              fill="#1F6FEB"
+              opacity="0.95"
+            />
+          </svg>
+          {{ usuario.nombre }}
+        </td>
+        <td>{{ usuario.email }}</td>
+        <td>{{ usuario.login }}</td>
+        <td>{{ usuario.rol }}</td>
+        <td class="btn-list">
+          <button class="edit-btn" (click)="editarUsuario(usuario.id!)">
+            Editar
+          </button>
+          <button class="delete-btn" (click)="eliminarUsuario(usuario.id!)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noUsers>
+    <p>No hay usuarios disponibles.</p>
+  </ng-template>
+</div>
